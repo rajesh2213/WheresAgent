@@ -1,0 +1,16 @@
+.timerContainer{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem 1.5rem;
+    border-radius: 8px;
+
+}
+
+.timer{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+}

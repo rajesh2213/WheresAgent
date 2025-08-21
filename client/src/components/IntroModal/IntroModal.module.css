@@ -1,0 +1,105 @@
+
+.modal{
+    position: fixed;
+    max-width: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: var(--green-trans);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+    box-shadow: var(--box-shadow-modal);
+    border: 1px solid var(--border-color-subtle); 
+}
+
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+    z-index: 999; 
+}
+
+.textSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.textSection h2{
+    font-family: var(--font-header-primary);
+    font-size: clamp(2rem, 2rem, 3rem);
+    text-align: center;
+    text-shadow: var(--text-shadow-black);
+    color: #ffffff; 
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--green-trans); 
+    letter-spacing: 0.5px;
+}
+
+.textSection p {
+    font-family: var(--font-header-tertiary);
+    font-size: clamp(1.5rem, 2rem, 2.5rem);
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.12); 
+    padding: 30px; 
+    border-radius: 12px; 
+    gap: 20px; 
+    box-shadow: var(--box-shadow-inset); 
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+}
+
+.formSection{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.formSection input{
+    font-family: var(--font-header-tertiary);
+    font-size: clamp(1rem, 1.5rem, 2rem);
+    padding: 2px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    max-width: 500px;
+}
+
+.btnContainer{
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal button{
+    font-family: var(--font-header-tertiary);
+    font-size: clamp(1rem, 1.2rem, 1.5rem);
+    border-radius: 8px;
+    padding: 2px 5px;
+    cursor: pointer;
+}
+
+.modal button:hover{
+    background-color: rgba(255, 255, 255, 0.51);
+}
+
+.skipBtn{
+    position: absolute;
+    right: 0;
+    background-color: rgba(128, 128, 128, 0.807);
+}

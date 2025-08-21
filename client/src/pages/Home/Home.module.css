@@ -1,0 +1,17 @@
+
+.homePage {
+    min-height: calc(100vh - var(--header-height) - 40px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.levelsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 100%;
+}

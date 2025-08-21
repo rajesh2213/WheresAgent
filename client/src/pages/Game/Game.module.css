@@ -1,0 +1,220 @@
+.gameContainer {
+    position: relative;
+    z-index: 0;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 60px 1fr;
+    gap: 20px;
+    font-family: var(--font-header-primary);
+    font-size: clamp(0.5rem, .8vw, 1rem);
+    max-width: 100vw;    
+    overflow-x: hidden;
+    overflow-y: auto;
+
+}
+
+.gameContainer::-webkit-scrollbar {
+    width: 20px;
+}
+
+.gameContainer::-webkit-scrollbar-track {
+    background: var(--green-trans);
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.gameContainer::-webkit-scrollbar-thumb {
+  background:
+    linear-gradient(45deg, rgba(0,0,0,0.6), var(--green-trans)),
+    url("data:image/svg+xml;utf8,<svg fill='white' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 4l-4 6h8z'/></svg>") no-repeat center 15%,
+    url("data:image/svg+xml;utf8,<svg fill='white' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 20l4-6H8z'/></svg>") no-repeat center 85%;
+  background-size: 30px, 30px, 30px; 
+  border-radius: 10px;
+  border: 2px solid rgb(248, 248, 248);
+  transition: background 0.3s ease;
+}
+
+.gameContainer::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, var(--green-trans), rgba(0,0,0,0.6)),
+    url("data:image/svg+xml;utf8,<svg fill='white' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 4l-4 6h8z'/></svg>") no-repeat center 15%,
+    url("data:image/svg+xml;utf8,<svg fill='white' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 20l4-6H8z'/></svg>") no-repeat center 85%;
+    ;
+   background-size: 30px, 30px, 30px;  
+}
+
+.gameContainer::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+
+.gameContainer::before{
+    content: '';
+    z-index: -1;
+    inset: 0;
+    background-color: rgba(0, 0, 0, .4);
+    position: fixed;
+}
+
+.controlSection {
+    grid-column: span 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: 100%;
+    padding: 0px 2rem;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.12); 
+    padding: 30px; 
+    border-radius: 12px; 
+    gap: 20px; 
+    box-shadow: var(--box-shadow-inset); 
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+}
+
+.resetBtn {
+    margin-left: auto;
+    padding: 0.5rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: linear-gradient(45deg, rgba(0,0,0,0.6), var(--green-trans));
+    box-shadow:  var(--box-shadow-inset);
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+}
+
+.resetBtn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, var(--green-trans), rgba(0,0,0,0.6));
+    opacity: 0;
+    transition: opacity .5s ease;
+    z-index: 0;
+}
+
+.resetBtn:hover::before {
+    opacity: 1;
+}
+
+.resetBtn > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+}
+
+.targetsSection {
+    grid-column: 1/2;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.potraitContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    position: sticky;     
+    top: 20px;            
+    z-index: 1000;
+}
+
+.imageSection{
+  position: relative;
+  grid-column: 2 / 3;
+}
+
+.imageSection img {
+    max-width: 100%;
+    border-radius: 20px;
+    display: block;
+    object-fit: contain;
+    cursor: url('https://res.cloudinary.com/dhasbbkmn/image/upload/w_40,h_40,c_scale/v1749125607/waldo-crosshair_gxlpex.png') 16 16, auto;
+}
+
+.optionsBox{
+    display: flex;
+    flex-direction: column;
+}
+
+.clickSection{
+    display: flex;
+}
+
+.hitMarker {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  cursor: pointer;
+  z-index: 1;
+}
+
+.hitMarkerTimerCircle {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid var(--green-trans);
+  border-radius: 50%;
+  animation: spin 1s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(40deg);
+    }
+    100% {
+        transform: rotate(330deg);
+    }
+ 
+}
+
+.optionsBox {
+    position: absolute;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.optionBtn {
+    font-family: var(--font-header-secondary);
+    padding: 2px 5px;
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.499);
+    cursor: pointer;
+}
+
+.optionBtn:hover{
+    background-color: var(--green-trans);
+}
+
+.foundCharacterMark {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}

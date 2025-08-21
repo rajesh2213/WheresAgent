@@ -1,0 +1,88 @@
+.levelCard {
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    aspect-ratio: 7/10;
+    display: block;
+    background-color: var(--card-color);
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow-green);
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    margin: 1rem;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.levelWrapper {
+    position: relative;
+    width: 85%;
+    height: 90%;
+    overflow: hidden;
+    margin: auto;
+    border-radius: 8px;
+    transition: all 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.levelImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+    display: block;
+}
+
+.imageOverlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(0, 0, 0, 0.5)
+    );
+    mix-blend-mode: normal;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.levelCard:hover .levelWrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.levelCard:hover .levelImage {
+    transform: scale(1.1);
+}
+
+.levelCard:hover .levelName {
+    transform: scale(1.35) translateY(-30%);
+}
+
+.levelName {
+    position: absolute;
+    width: 100%;
+    bottom: 20%;
+    font-family: var(--font-header-tertiary);
+    color: white;
+    text-align: center;
+    text-shadow: var(--text-shadow-green);
+    z-index: 2;
+    font-size: clamp(1.5rem, 6vw, 3.5rem);
+    margin: 0;
+    padding: 10px;
+    /* background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); */
+    transition: all 0.8s ease;
+}

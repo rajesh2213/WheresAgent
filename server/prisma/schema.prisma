@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Level {
+  id         String      @id @default(uuid())
+  name       String
+  imgUrl     String      @map("img_url")
+  characters Character[]
+  createdAt  DateTime    @default(now())
+  Game       Game[]
+
+  @@map("levels")
+}
+
+model Character {
+  id             String           @id @default(uuid())
+  name           String
+  potrait        String
+  x              Float
+  y              Float
+  tolerance      Float
+  levelId        String
+  foundCharacter FoundCharacter[]
+
+  level Level @relation(fields: [levelId], references: [id])
+
+  @@index([levelId], name: "idx_characters_levelid")
+  @@map("characters")
+}
+
+model Game {
+  id         String           @id @default(uuid())
+  startedAt  DateTime         @default(now())
+  endedAt    DateTime?
+  playerName String?
+  sessionId  String?
+  found      FoundCharacter[]
+  levelId    String
+
+  level Level @relation(fields: [levelId], references: [id])
+
+  @@index([levelId], name: "idx_games_levelid")
+  @@index([startedAt], name: "idx_games_startedat")
+  @@index([endedAt], name: "idx_games_endedat")
+  @@index([levelId, endedAt], name: "idx_games_levelid_endedat")
+  @@map("games")
+}
+
+model FoundCharacter {
+  id          String   @id @default(uuid())
+  foundAt     DateTime @default(now())
+  gameId      String
+  characterId String
+
+  character Character @relation(fields: [characterId], references: [id])
+  game      Game      @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  @@unique([gameId, characterId])
+  @@index([gameId], name: "idx_foundcharacters_gameid")
+  @@index([gameId, foundAt], name: "idx_foundcharacters_gameid_foundat")
+  @@map("found_characters")
+}

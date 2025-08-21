@@ -1,0 +1,74 @@
+.potraitCard {
+    width: 100%;
+    height: clamp(50px, 10vw, 350px);
+    aspect-ratio: 4/4;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    border-radius: 8px;
+    font-family: var(--font-header-tertiary);
+    font-size: clamp(.5rem, 1vw, 1.5rem);
+}
+
+.potraitWrapper {
+    flex: 1;
+    width: 90%;
+    height: 90%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.potraitWrapper::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 0, 0, 0.6);
+    transform-origin: center;
+    transform: rotate(45deg) scaleX(0);
+    opacity: 0;
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+}
+
+.potraitWrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 0, 0, 0.6);
+    transform-origin: center;
+    transform: rotate(-45deg) scaleX(0);
+    opacity: 0;
+    transition: transform 0.4s ease-out 0.4s, opacity 0.4s ease-out 0.4s; 
+}
+
+.hit::before {
+    transform: rotate(45deg) scaleX(1);
+    opacity: 1;
+}
+
+.hit::after {
+    transform: rotate(-45deg) scaleX(1);
+    opacity: 1;
+}
+
+
+.potraitImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
